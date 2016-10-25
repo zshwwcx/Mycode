@@ -7,3 +7,10 @@ for line in file:
 
 
 
+x=88 #Global x
+def func():
+    global x
+    x=99  #Global x ,outside def
+    
+func()
+print(x)  #x=99
