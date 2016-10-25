@@ -6,7 +6,7 @@ for line in file:
 
 
 
-
+#全局变量在函数内修改的时候，要先进行global申明，否则会被误认为在函数内重新定义了一个新的local变量。
 x=88 #Global x
 def func():
     global x
@@ -14,3 +14,4 @@ def func():
     
 func()
 print(x)  #x=99
+###################################
