@@ -2,7 +2,7 @@
 file=open('read','r')
 for line in file:
     print(line,end=' ')
-###################################
+######################################################################
 
 
 
@@ -14,4 +14,31 @@ def func():
     
 func()
 print(x)  #x=99
-###################################
+######################################################################
+
+
+#在函数调用中，参数必须依此顺序出现：任何位置参数(value),后面跟着人和关键字参数(name=value)和*sequence 形式的组合，后面跟着**dict形式。
+def __init__( self, name, *noxArgs, **kwargs ):
+        """Init.
+           name: name to give controller
+           noxArgs: arguments (strings) to pass to NOX"""
+        if not noxArgs:
+            warn( 'warning: no NOX modules specified; '
+                  'running packetdump only\n' )
+            noxArgs = [ 'packetdump' ]
+        elif type( noxArgs ) not in ( list, tuple ):
+            noxArgs = [ noxArgs ]
+
+        if 'NOX_CORE_DIR' not in os.environ:
+            exit( 'exiting; please set missing NOX_CORE_DIR env var' )
+        noxCoreDir = os.environ[ 'NOX_CORE_DIR' ]
+
+        Controller.__init__( self, name,
+                             command=noxCoreDir + '/nox_core',
+                             cargs='--libdir=/usr/local/lib -v -i ptcp:%s ' +
+                             ' '.join( noxArgs ),
+                             cdir=noxCoreDir,
+                             **kwargs )
+######################################################################     
+
+
